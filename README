@@ -1,0 +1,16 @@
+I have written this pluggin which helps in generating the HTML dynamically using scriptlets (similar to JSP sciplets). You can easily try it out by refering demo.html
+
+-demo.html creates a simple table whose content is obtained dynamically using for loop within scriplets. To play around just refer below line and alter accordingly.
+
+    Scriptlet.generateHtml ( template, object);
+
+The above function takes 2 arguments, template and object.
+
+    Template : String with or without scriplets block ( the dynamic content  between &lt;% and %&gt;). In demo.html that argument is sent by document.getElementById("tmpl").innerHTML
+    Object : This object is used as the scope object i.e.  properties of this object are available as local variables inside the scriplets. If this argument is not passed then window object is taken by default.
+
+This function returns a string which is the output of processing the template string along with dynamic content from scriplets.
+
+In demo.html, the return string is applied as innerHTML to an element in the body and table is displayed.
+
+Just try out different use cases please share your feedback.
