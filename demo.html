@@ -1,0 +1,71 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="Scriptlet.js" ></script>
+        <script>
+            function createDemoData() {
+                var obj = {};
+                obj.head = ["first column","second column","third column","fourth column","fifth column","sixth column","seventh column","eigth column"];
+                obj.body = [];
+
+                for(var l=0; l < 20; l++){
+                    obj.body[l] = [];
+                    for(var k=0; k < 8; k++){
+                        obj.body[l][k] = l;
+                    }
+                }
+                return obj;
+            }
+            function onReady(){
+                document.getElementById("container").innerHTML =  Scriptlet.generateHtml ( document.getElementById("tmpl"), createDemoData() );
+            }
+        </script>
+        <script id="tmpl" type="text/tmpl">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <%
+                        for(var k=0; k < head.length; k++){
+                        %>
+                        <th class="t-head"> <%= head[k] %>  </th>
+                        <% } %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    for(var k =0; k < body.length; k++ ){
+                    %>
+                    <tr>
+                        <%
+                        for(var l= 0; l < body[k].length; l++){
+                        %>
+                        <td>
+                            <%= body[k][l]%>
+                        </td>
+                        <% } %>
+                    </tr>
+                    <% }%>
+                </tbody>
+            </table>
+        </div>
+    </script>
+    <style>
+        td, th, table, tr{
+            border:1px solid black;
+            padding:2px 4px;
+        }
+    </style>
+</head>
+<body onload="onReady();">
+    <div id ="container">
+    </div>
+    
+</body>
+</html>
